@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-16"?>
+<LTProjectResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <WatchScripts>
+        <WatchScript>
+            <Script>CurrentUser</Script>
+        </WatchScript>
+    </WatchScripts>
+    <Ignored>
+        <KeyValueItem>
+            <Key>C:\Alex\Work\2.Стандартизация\Template\REFrameworkTemplatePrimo\Framework\Process.ltw</Key>
+            <Value>c9e8154a-d0e6-4d2d-b809-b33248b8f070</Value>
+        </KeyValueItem>
+        <KeyValueItem>
+            <Key>C:\Alex\Work\2.Стандартизация\Template\REFrameworkTemplatePrimo\Framework\Process.ltw</Key>
+            <Value>99e299cf-14f1-44d5-8a11-43ed6ce2c9a2</Value>
+        </KeyValueItem>
+    </Ignored>
+    <Breakpoints>
+        <KeyValueItem>
+            <Key>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Process\DownloadFile.ltw</Key>
+            <Value>1e7b979c-5f1d-4d81-9609-14d6531dd2c7</Value>
+        </KeyValueItem>
+        <KeyValueItem>
+            <Key>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Framework\Process.ltw</Key>
+            <Value>168cd37b-9eb1-4452-9974-3dc60b342fe0</Value>
+        </KeyValueItem>
+    </Breakpoints>
+    <Git />
+    <LastOpenedItems>
+        <string>C:\Alex\Work\2.Стандартизация\Template\REFrameworkTemplatePrimo\Main.ltw</string>
+        <string>C:\Alex\Work\2.Стандартизация\Template\REFrameworkTemplatePrimo\Framework\KillProcesses.ltw</string>
+        <string>D:\Alex\Work\2.Стандартизация\Template\REFrameworkTemplatePrimo\Main.ltw</string>
+        <string>D:\Alex\Work\2.Стандартизация\Template\REFrameworkTemplatePrimo\Framework\KillProcessesScript.ltw</string>
+        <string>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Main.ltw</string>
+        <string>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Process\DownloadFile.ltw</string>
+        <string>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Framework\CreateTransactions.ltw</string>
+        <string>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Framework\Process.ltw</string>
+        <string>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Framework\TakeScreenshot.ltw</string>
+        <string>C:\Users\shishkin00071_ext\Desktop\reframeworkprimorpa-master\Framework\SetTransactionStatus.ltw</string>
+    </LastOpenedItems>
+</LTProjectResources>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-16"?>
+<SerializationRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <WorkflowType>2</WorkflowType>
+    <IsTestCase>false</IsTestCase>
+    <UseArgs>false</UseArgs>
+    <ScriptType>CS</ScriptType>
+    <RootContainer>
+        <ClassName>LTools.Workflow.View.WFOnlyCode</ClassName>
+        <AssemblyName>LTools.Workflow, Version=1.0.6.1, Culture=neutral, PublicKeyToken=null</AssemblyName>
+        <Properties>
+            <SerializationItem>
+                <IsListValue>false</IsListValue>
+                <Name>ComponentName</Name>
+            </SerializationItem>
+            <SerializationItem>
+                <IsListValue>false</IsListValue>
+                <Name>ComponentID</Name>
+                <Value xmlns:q1="http://microsoft.com/wsdl/types/" xsi:type="q1:guid">00000000-0000-0000-0000-000000000000</Value>
+            </SerializationItem>
+            <SerializationItem>
+                <IsListValue>false</IsListValue>
+                <Name>ContinueOnException</Name>
+                <Value xsi:type="xsd:boolean">false</Value>
+            </SerializationItem>
+            <SerializationItem>
+                <IsListValue>false</IsListValue>
+                <Name>Variables</Name>
+                <Value xsi:type="ArrayOfScriptVariable" />
+            </SerializationItem>
+            <SerializationItem>
+                <IsListValue>false</IsListValue>
+                <Name>ScriptCode</Name>
+                <Value xsi:type="xsd:string">using System;
+using System.Collections.Generic;
+using System.Text;
+using LTools.Scripting.Model;
+using LTools.Network.Model;
+using System.Diagnostics;
+using System.Linq;
+using System.Management;
+
+public class PrimoScript 
+{
+	public static LTools.Scripting.CSharp.ScriptDebugger __debug;	
+	
+	public void main(LTools.Common.Model.WorkflowData wf)
+    {
+		//Получение аргумента
+		String[] in_ProcessesToKill = (String[]) wf.GetArgument ("in_ProcessesToKill");
+		
+		//Получение списка запущенных процессов
+        Process[]  runingProcess = Process.GetProcesses();
+		// получаем имя текущего пользователя
+		String CurrentUser = Environment.UserName;
+		int returnVal = 0;
+	
+		foreach (Process process in runingProcess) //Для каждого запущенного процесса		
+		{			
+			if (in_ProcessesToKill.Select(x =&gt; x.ToLower()).Contains(process.ProcessName.ToLower())) 
+                { 
+                   //создаем запрос для поиска по PID
+					string query = "Select * From Win32_Process Where ProcessID = " + process.Id;
+					//Создаем серчер для выборки по запросу 
+					ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+					ManagementObjectCollection processList = searcher.Get();
+					
+					//Перебираем выборку
+					foreach (ManagementObject obj in processList)
+					{
+						//Получаем имя владельца процесса
+						string[] argList = new string[] { string.Empty, string.Empty };
+						try
+						{
+							returnVal = Convert.ToInt32(obj.InvokeMethod("GetOwner", argList));
+						}
+		                catch
+						{
+						}
+						if (returnVal == 0 &amp;&amp; argList[0] == CurrentUser)
+						{
+							process.Kill();
+		
+						}
+					}			
+				}
+		}
+	}
+}</Value>
+            </SerializationItem>
+        </Properties>
+        <Components />
+    </RootContainer>
+    <GlobalVariables />
+    <Arguments>
+        <ScriptVariable>
+            <Name>in_ProcessesToKill</Name>
+            <Group />
+            <DefaultValue xsi:type="xsd:string">new String[] {"excel", "outlook"}</DefaultValue>
+            <DataTypeString>System.String[]</DataTypeString>
+            <Direction>IN</Direction>
+        </ScriptVariable>
+    </Arguments>
+</SerializationRoot>
